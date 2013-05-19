@@ -15,4 +15,5 @@ func (res *Response) Send(text string) {
 
 func (res *Response) NotFound() {
 	res.writer.WriteHeader(http.StatusNotFound)
+	fmt.Fprintf(res.writer, "404 Not found")
 }

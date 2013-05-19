@@ -10,6 +10,18 @@ func main() {
 
 	app := web.CreateServer()
 	router := app.Router()
+
+	router.Get("/", func(res *web.Response, req *web.Request) {
+		view := new(web.View)
+		data := struct {
+			Name string
+			Message string
+		} {
+			"vrenc",
+			"sup?",
+		}
+		res.Send(view.Render("./templates/index.html", data))
+	})
 	router.Get("/abc", func(res *web.Response, req *web.Request) {
 		res.Send("abcdefghijklmnopqrstuvwxyz")
 	})

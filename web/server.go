@@ -1,12 +1,12 @@
 package web
 
-import(
+import (
 	"net/http"
 	"strconv"
 )
 
 type Server struct {
-	router *Router
+	router  *Router
 	handler *Handler
 }
 

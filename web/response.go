@@ -1,9 +1,9 @@
 package web
 
-import(
+import (
+	"encoding/json"
 	"fmt"
 	"net/http"
-	"encoding/json"
 )
 
 type Response struct {
@@ -23,4 +23,12 @@ func (res *Response) Json(data interface{}) {
 func (res *Response) NotFound() {
 	res.writer.WriteHeader(http.StatusNotFound)
 	fmt.Fprintf(res.writer, "404 Not found")
+}
+
+func (res *Response) SetStatusCode(status int) {
+	res.writer.WriteHeader(status)
+}
+
+func (res *Response) Headers() http.Header {
+	return res.writer.Header()
 }

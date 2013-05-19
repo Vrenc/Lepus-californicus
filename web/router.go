@@ -1,6 +1,6 @@
 package web
 
-import(
+import (
 	"fmt"
 )
 
@@ -14,7 +14,7 @@ func (r *Router) Get(pattern string, callback func(res *Response, req *Request))
 
 func (r *Router) Register(method string, pattern string, callback func(res *Response, req *Request)) {
 	fmt.Println("route registered")
-	route := new (Route)
+	route := new(Route)
 	route.method = method
 	route.pattern = pattern
 	route.Callback = callback
@@ -24,7 +24,7 @@ func (r *Router) Register(method string, pattern string, callback func(res *Resp
 
 func (r *Router) MatchURI(method string, uri string) *Route {
 	for _, route := range r.routes {
-		if(route.matches(uri)) {
+		if route.matches(uri) {
 			return route
 		}
 	}

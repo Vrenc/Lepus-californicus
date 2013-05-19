@@ -1,8 +1,8 @@
 package main
 
-import(
-	"fmt"
+import (
 	"./web"
+	"fmt"
 )
 
 func main() {
@@ -14,9 +14,9 @@ func main() {
 	router.Get("/", func(res *web.Response, req *web.Request) {
 		view := new(web.View)
 		data := struct {
-			Name string
+			Name    string
 			Message string
-		} {
+		}{
 			"vrenc",
 			"sup?",
 		}
@@ -29,33 +29,33 @@ func main() {
 		res.Send(req.Param("id"))
 	})
 	router.Get("/post/:user/:id", func(res *web.Response, req *web.Request) {
-		res.Send(req.Param("user")+", "+req.Param("id"))
+		res.Send(req.Param("user") + ", " + req.Param("id"))
 	})
 	router.Get("/json", func(res *web.Response, req *web.Request) {
 		data := struct {
 			Posts []interface{}
 			Count int
-			Date string
-		} {
-			[]interface{} {
+			Date  string
+		}{
+			[]interface{}{
 				struct {
 					Message string
-					User string
-				} {
+					User    string
+				}{
 					"Wat is deze?",
 					"vrenc",
 				},
 				struct {
 					Message string
-					User string
-				} {
+					User    string
+				}{
 					"jeweetzelluf",
 					"freek",
 				},
 				struct {
 					Message string
-					User string
-				} {
+					User    string
+				}{
 					"#YOLO #SWAG",
 					"jesus",
 				},

@@ -1,8 +1,8 @@
 package web
 
-import(
-	"html/template"
+import (
 	"bytes"
+	"html/template"
 )
 
 type View struct {
@@ -12,9 +12,8 @@ type View struct {
 func (v *View) Render(file string, data interface{}) string {
 	v.temp, _ = template.ParseFiles(file)
 
-	html := new(bytes.Buffer) 
+	html := new(bytes.Buffer)
 	v.temp.Execute(html, data)
 
 	return string(html.Bytes())
 }
-

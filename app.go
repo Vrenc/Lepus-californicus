@@ -29,7 +29,42 @@ func main() {
 		res.Send(req.Param("id"))
 	})
 	router.Get("/post/:user/:id", func(res *web.Response, req *web.Request) {
+		res.Send(req.Param("user")+", "+req.Param("id"))
+	})
+	router.Get("/json", func(res *web.Response, req *web.Request) {
+		data := struct {
+			Posts []interface{}
+			Count int
+			Date string
+		} {
+			[]interface{} {
+				struct {
+					Message string
+					User string
+				} {
+					"Wat is deze?",
+					"vrenc",
+				},
+				struct {
+					Message string
+					User string
+				} {
+					"jeweetzelluf",
+					"freek",
+				},
+				struct {
+					Message string
+					User string
+				} {
+					"#YOLO #SWAG",
+					"jesus",
+				},
+			},
+			3,
+			"19-05-2013",
+		}
 
+		res.Json(data)
 	})
 
 	app.Run(4000)

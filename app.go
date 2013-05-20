@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/vrenc/web"
+	"vrenc/web"
 	"fmt"
 )
 

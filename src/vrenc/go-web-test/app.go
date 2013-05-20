@@ -20,7 +20,7 @@ func main() {
 			"vrenc",
 			"sup?",
 		}
-		res.Send(view.Render("./templates/index.html", data))
+		res.Send(view.Render("../../../templates/index.html", data))
 	})
 	router.Get("/abc", func(res *web.Response, req *web.Request) {
 		res.Send("abcdefghijklmnopqrstuvwxyz")

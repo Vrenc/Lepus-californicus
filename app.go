@@ -1,8 +1,8 @@
 package main
 
 import (
-	"vrenc/web"
 	"fmt"
+	"vrenc/web"
 )
 
 func main() {
@@ -20,7 +20,7 @@ func main() {
 			"vrenc",
 			"sup?",
 		}
-		res.Send(view.Render("../../../templates/index.html", data))
+		res.Send(view.Render("templates/index.html", data))
 	})
 	router.Get("/abc", func(res *web.Response, req *web.Request) {
 		res.Send("abcdefghijklmnopqrstuvwxyz")
@@ -67,5 +67,5 @@ func main() {
 		res.Json(data)
 	})
 
-	app.Run(4000)
+	app.Run(3000)
 }

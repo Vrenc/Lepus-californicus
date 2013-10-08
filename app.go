@@ -11,7 +11,7 @@ func main() {
 	app := web.CreateServer()
 	router := app.Router()
 
-	router.Get("/", func(res *web.Response, req *web.Request) {
+	router.Get("/", func(req *web.Request, res *web.Response) {
 		view := new(web.View)
 		data := struct {
 			Name    string
@@ -22,16 +22,16 @@ func main() {
 		}
 		res.Send(view.Render("templates/index.html", data))
 	})
-	router.Get("/abc", func(res *web.Response, req *web.Request) {
+	router.Get("/abc", func(req *web.Request, res *web.Response) {
 		res.Send("abcdefghijklmnopqrstuvwxyz")
 	})
-	router.Get("/user/:id", func(res *web.Response, req *web.Request) {
+	router.Get("/user/:id", func(req *web.Request, res *web.Response) {
 		res.Send(req.Param("id"))
 	})
-	router.Get("/post/:user/:id", func(res *web.Response, req *web.Request) {
+	router.Get("/post/:user/:id", func(req *web.Request, res *web.Response) {
 		res.Send(req.Param("user") + ", " + req.Param("id"))
 	})
-	router.Get("/json", func(res *web.Response, req *web.Request) {
+	router.Get("/json", func(req *web.Request, res *web.Response) {
 		data := struct {
 			Posts []interface{}
 			Count int
